@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cis411';
+
+
+  constructor(public httpClient: HttpClient){
+  }  
+
+  getExample(){
+    this.httpClient.get<Art>('urlwhatever');
+  }
+}
+
+export class Art{
+  title: string;
+
 }
