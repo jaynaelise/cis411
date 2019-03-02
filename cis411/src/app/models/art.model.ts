@@ -1,4 +1,4 @@
-export class Painting{
+export class Art{
     Title: string;
     ArtistName: string;
     Year: string;
@@ -6,4 +6,5 @@ export class Painting{
     Culture: string;
     Period: string;
     ImageLink: string;
+    ObjectNumber: string;
 }

@@ -10,25 +10,31 @@ import { MaterialModule } from './material/material.module';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { ArtService } from './services/art.service';
 import { FilterFormComponent } from './home/filter-form/filter-form.component';
+import { FormsModule } from '@angular/forms';
+import { ArtPageComponent } from './art-page/art-page.component';
+import { ArtDetailComponent } from './art-page/art-detail/art-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavMenuComponent,
-    FilterFormComponent
+    FilterFormComponent,
+    ArtPageComponent,
+    ArtDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   providers: [
     ArtService
   ],
-  bootstrap: [AppComponent, HomeComponent, NavMenuComponent, FilterFormComponent],
+  bootstrap: [AppComponent, HomeComponent, NavMenuComponent, FilterFormComponent, ArtPageComponent, ArtDetailComponent],
   entryComponents: [FilterFormComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
