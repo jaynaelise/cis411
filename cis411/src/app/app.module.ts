@@ -9,6 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FeaturesComponent } from './features/features.component';
 import { BigfeatureComponent } from './bigfeature/bigfeature.component';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BigfeatureComponent } from './bigfeature/bigfeature.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule, 
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
