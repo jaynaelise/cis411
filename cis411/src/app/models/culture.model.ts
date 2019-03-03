@@ -1,3 +1,3 @@
 export class Culture{
-    name: string;
+    Name: string;
 }

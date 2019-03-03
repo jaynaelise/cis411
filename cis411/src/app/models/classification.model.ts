@@ -1,3 +1,3 @@
 export class Classification{
-    name: string;
+    Name: string;
 }

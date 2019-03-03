@@ -10,7 +10,7 @@ import { MaterialModule } from './material/material.module';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { ArtService } from './services/art.service';
 import { FilterFormComponent } from './home/filter-form/filter-form.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormBuilder } from '@angular/forms';
 import { ArtPageComponent } from './art-page/art-page.component';
 import { ArtDetailComponent } from './art-page/art-detail/art-detail.component';
 
@@ -32,7 +32,8 @@ import { ArtDetailComponent } from './art-page/art-detail/art-detail.component';
     FormsModule
   ],
   providers: [
-    ArtService
+    ArtService,
+    FormBuilder
   ],
   bootstrap: [AppComponent, HomeComponent, NavMenuComponent, FilterFormComponent, ArtPageComponent, ArtDetailComponent],
   entryComponents: [FilterFormComponent],

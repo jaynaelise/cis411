@@ -16,28 +16,27 @@ export class ArtService {
     }
 
     getArtByClassificationCulture(searchCriteria: SearchCriteria, pageNumber: number):Observable<any>{
-        return this._httpClient.get<Array<any>>(`${environment.baseHarvardApi}/object?apikey=${environment.harvardApiKey}
-        &q=culture:${searchCriteria.Culture}&classification=${searchCriteria.Classification}&period=${searchCriteria.Period}
-        &size=20&page=${pageNumber}`);
+        return this._httpClient
+        .get<any>(`${environment.baseHarvardApi}object?apikey=${environment.harvardApiKey}&q=culture:${searchCriteria.Culture}&classification=${searchCriteria.Classification}&period=${searchCriteria.Period}&size=20&page=${pageNumber}`);
     }
 
     getArtByObjectNumber(objectNumber: string){
-        this._httpClient.get<Array<any>>(`${environment.baseHarvardApi}/object?apikey=${environment.harvardApiKey}
-        &objectnumber=${objectNumber}`);
+        this._httpClient
+        .get<any>(`${environment.baseHarvardApi}object?apikey=${environment.harvardApiKey}&objectnumber=${objectNumber}`);
     }
 
     getClassifications(page: number){
-        return this._httpClient.get<Array<any>>(`${environment.baseHarvardApi}/classification?apikey=${environment.harvardApiKey}
-        &size=30&page=${page}`);
+        return this._httpClient
+        .get<any>(`${environment.baseHarvardApi}classification?apikey=${environment.harvardApiKey}&size=300&page=${page}`);
     }
 
     getCultures(page: number){
-        return this._httpClient.get<Array<any>>(`${environment.baseHarvardApi}/culture?apikey=${environment.harvardApiKey}
-        &size=30&page=${page}`)
+        return this._httpClient
+        .get<any>(`${environment.baseHarvardApi}culture?apikey=${environment.harvardApiKey}&size=300&page=${page}`)
     }
 
     getPeriods(page: number){
-        return this._httpClient.get<Array<any>>(`${environment.baseHarvardApi}/period?apikey=${environment.harvardApiKey}
-        &size=30&page=${page}`);
+        return this._httpClient
+        .get<any>(`${environment.baseHarvardApi}period?apikey=${environment.harvardApiKey}&size=300&page=${page}`);
     }
 }

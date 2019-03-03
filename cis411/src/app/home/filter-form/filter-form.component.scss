@@ -1,0 +1,13 @@
+mat-card{
+    max-height: 500px;
+    max-width: 500px;
+}
+
+.form-controls-container{
+    display: flex;
+    flex-direction: column 
+}
+
+mat-slider {
+    width: inherit;
+  }

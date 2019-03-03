@@ -26,7 +26,6 @@ export class ArtPageComponent implements OnInit {
 
   getArt(){
     this._artService.getArtByClassificationCulture(this.searchCriteria, this.pageNumber).subscribe(res => {
-      this.artPieces = res.map(x => new <Art>({Title: x.title, Description: x.description, Year: x.dated, Culture: x.culture, }))
-    })
+    });
   }
 }
