@@ -20,10 +20,10 @@ export class ArtService {
         .get<any>(`${environment.baseHarvardApi}object?apikey=${environment.harvardApiKey}&q=culture:${searchCriteria.Culture}&classification=${searchCriteria.Classification}&period=${searchCriteria.Period}&size=20&page=${pageNumber}`);
     }
 
-    getArtByObjectNumber(objectNumber: string){
-        this._httpClient
-        .get<any>(`${environment.baseHarvardApi}object?apikey=${environment.harvardApiKey}&objectnumber=${objectNumber}`);
-    }
+    // getArtByObjectNumber(objectNumber: string){
+    //     this._httpClient
+    //     .get<any>(`${environment.baseHarvardApi}object?apikey=${environment.harvardApiKey}&objectnumber=${objectNumber}`);
+    // }
 
     getClassifications(page: number){
         return this._httpClient
@@ -38,5 +38,20 @@ export class ArtService {
     getPeriods(page: number){
         return this._httpClient
         .get<any>(`${environment.baseHarvardApi}period?apikey=${environment.harvardApiKey}&size=300&page=${page}`);
+    }
+
+    getMediums(page: number){
+        return this._httpClient
+        .get<any>(`${environment.baseHarvardApi}medium?apikey=${environment.harvardApiKey}&size=300&page${page}`);
+    }
+
+    getArtByObjectNumberRijk(objectNumber: string){
+        return this._httpClient
+        .get<any>(`${environment.rijksMuseumApi}collection/${objectNumber}?key=${environment.rijksMuseumApiKey}&format=json`);
+    }
+
+    getArtByCenturyAndColorRijk(century: number, color: string){
+        return this._httpClient
+        .get<any>(`${environment.rijksMuseumApi}collection?key=${environment.rijksMuseumApiKey}&format=json&f.normalized32Colors.hex=%20%23${color}&f.dating.period=${century}`);
     }
 }

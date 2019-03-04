@@ -5,7 +5,9 @@
 export const environment = {
   harvardApiKey: "589a03f0-37ce-11e9-b640-c3e2f24a7f4f",
   production: false,
-  baseHarvardApi: 'https://api.harvardartmuseums.org/'
+  baseHarvardApi: 'https://api.harvardartmuseums.org/',
+  rijksMuseumApi: 'https://www.rijksmuseum.nl/api/en/',
+  rijksMuseumApiKey: 'BJ2burmu'
 };
 
 /*
