@@ -1,0 +1,44 @@
+<mat-card class="mat-elevation-z0">
+  <mat-card-header>
+    <mat-card-title>Get started on your quest</mat-card-title>
+    <mat-card-subtitle>
+      Just like any good game, we want you to choose your starting point.
+      Pick the option below you wish to search by and start your journey.
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="form-controls-container">
+      <mat-tab-group>
+        <mat-tab label="Artwork Medium">
+          <div class="row">
+            <div *ngFor="let medium of mediums" class="col-3 item-wrapper mat-elvation-z2">
+              <span>{{medium.Name}}</span>
+            </div>
+          </div> 
+        </mat-tab>
+        <mat-tab label="Culture">
+          <mat-form-field>
+            <mat-select placeholder="Select culture" [(value)]="culture">
+              <mat-option *ngFor="let culture of cultures" [value]="culture.Name">{{culture.Name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-tab>
+        <mat-tab label="Time Period">
+          <mat-form-field>
+            <mat-select placeholder="Select time period" [(value)]="period">
+              <mat-option *ngFor="let period of periods" [value]="period.Name">{{period.Name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+    <div *ngIf="testResults">
+      <div *ngFor="let result of testResults">
+        <h1>{{result.Title}}</h1>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-footer>
+    <button mat-button (click)="searchArt(culture, period, classification)">Search</button>
+  </mat-card-footer>
+</mat-card>

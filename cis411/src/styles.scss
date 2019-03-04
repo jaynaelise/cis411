@@ -2,3 +2,15 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+*::-webkit-scrollbar {
+    width: 0.60em;
+    background-color: transparent;
+  }
+
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: red;
+    outline: 1px solid red;
+    border-radius: 10px;
+  }

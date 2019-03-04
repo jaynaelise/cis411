@@ -1,0 +1,21 @@
+mat-card{
+    max-height: 500px;
+    max-width: 600px;
+}
+
+.form-controls-container{
+    display: flex;
+    flex-direction: column 
+}
+
+mat-slider {
+    width: inherit;
+  }
+
+.object-count-wrapper{
+    background-color: rgba(0, 0, 0, 0.486);
+    color: whitesmoke;
+    border-radius: 25px;
+    font-size: 12px;
+    padding:3px;
+}
