@@ -7,11 +7,11 @@ import { Culture } from '../models/culture.model';
 import { Period } from '../models/period.model';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-opensearch',
+  templateUrl: './opensearch.component.html',
+  styleUrls: ['./opensearch.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class OpenSearchComponent implements OnInit {
 
   classifications: Array<Classification> = new Array<Classification>();
   cultures: Array<Culture> = new Array<Culture>();

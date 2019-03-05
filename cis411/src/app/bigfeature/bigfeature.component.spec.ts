@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BigfeatureComponent } from './bigfeature.component';
+import { OpenSearchComponent } from '../opensearch/opensearch.component';
 
 describe('BigfeatureComponent', () => {
   let component: BigfeatureComponent;
