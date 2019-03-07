@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
+import { HeaderComponent } from './header.component';
+import { BigfeatureComponent } from './bigfeature.component';
+import { FeaturesComponent } from './features.component';
+import { FooterComponent } from './footer.component';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
