@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MatDialog, MatDialogConfig } from '@angular/material';
 import { FilterFormComponent } from './filter-form/filter-form.component';
-import { Classification } from '../models/classification.model';
+import { Century } from '../models/century.model';
 import { ArtService } from '../services/art.service';
 import { Culture } from '../models/culture.model';
 import { Period } from '../models/period.model';
@@ -13,7 +13,7 @@ import { Period } from '../models/period.model';
 })
 export class OpenSearchComponent implements OnInit {
 
-  classifications: Array<Classification> = new Array<Classification>();
+  centuries: Array<Century> = new Array<Century>();
   cultures: Array<Culture> = new Array<Culture>();
   periods: Array<Period> = new Array<Period>();
   pageNumber: number = 1;

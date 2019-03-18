@@ -20,6 +20,11 @@ export class ArtService {
         .get<any>(`${environment.baseHarvardApi}object?apikey=${environment.harvardApiKey}&q=culture:${searchCriteria.Culture}&classification=${searchCriteria.Classification}&period=${searchCriteria.Period}&size=20&page=${pageNumber}`);
     }
 
+    getCentury(){
+        return this._httpClient
+        .get<any>(`${environment.baseHarvardApi}century?apikey=${environment.harvardApiKey}&size=300`);
+    }
+
     // getArtByObjectNumber(objectNumber: string){
     //     this._httpClient
     //     .get<any>(`${environment.baseHarvardApi}object?apikey=${environment.harvardApiKey}&objectnumber=${objectNumber}`);

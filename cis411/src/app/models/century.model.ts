@@ -1,4 +1,4 @@
-export class Culture{
+export class Century{
     Name: string;
     ObjectCount: number;
 }
