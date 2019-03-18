@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { Culture } from 'src/app/models/culture.model';
-import { Classification } from 'src/app/models/classification.model';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ArtService } from 'src/app/services/art.service';
 import { Router } from '@angular/router';
@@ -9,6 +8,7 @@ import { Period } from 'src/app/models/period.model';
 import { SearchCriteria } from 'src/app/models/search-criteria.model';
 import { Art } from 'src/app/models/art.model';
 import { Medium } from 'src/app/models/medium.model';
+import { Century } from 'src/app/models/century.model';
 
 @Component({
   selector: 'app-filter-form',
@@ -18,7 +18,7 @@ import { Medium } from 'src/app/models/medium.model';
 export class FilterFormComponent implements OnInit {
 
   cultures: Array<Culture> = new Array<Culture>();
-  classifications: Array<Classification> = new Array<Classification>();
+  classifications: Array<Century> = new Array<Century>();
   periods: Array<Period> = new Array<Period>();
   mediums: Array<Medium> = new Array<Medium>();
   searchForm: FormGroup;
@@ -36,7 +36,6 @@ export class FilterFormComponent implements OnInit {
     });
 
     this.getCultures();
-    this.getClassifications();
     this.getPeriods();
     this.getMediums()
   }
@@ -58,18 +57,10 @@ export class FilterFormComponent implements OnInit {
     });
   }
 
-  getClassifications() {
-    this._artService.getClassifications(this.classificationPageNumber).subscribe(res => {
-      this.classifications = res.records.map(classification => <Classification>{ Name: classification.name });
-      this.classifications.sort((x, y) => {
-        if(x.Name.toLocaleLowerCase().substring(0,1) > y.Name.toLocaleLowerCase().substring(0,1)){
-          return 1;
-        }
-        else{
-          return -1
-        }
-      });
-    });
+  getCenturies(){
+    this._artService.getCentury().subscribe(res => {
+      
+    })
   }
 
   getPeriods() {
