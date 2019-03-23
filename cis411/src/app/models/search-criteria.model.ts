@@ -1,5 +1,5 @@
 export class SearchCriteria{
-    Period: string;
+    Medium: string;
     Culture: string;
-    Classification: string;
+    Century: string;
 }
