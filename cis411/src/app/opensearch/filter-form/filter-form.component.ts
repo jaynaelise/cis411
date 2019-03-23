@@ -18,7 +18,7 @@ import { Century } from 'src/app/models/century.model';
 export class FilterFormComponent implements OnInit {
 
   cultures: Array<Culture> = new Array<Culture>();
-  classifications: Array<Century> = new Array<Century>();
+  centuries: Array<Century> = new Array<Century>();
   periods: Array<Period> = new Array<Period>();
   mediums: Array<Medium> = new Array<Medium>();
   searchForm: FormGroup;
@@ -26,6 +26,7 @@ export class FilterFormComponent implements OnInit {
   classificationPageNumber: number = 1;
   periodPageNumber: number = 1;
   testResults: Array<Art> = new Array<Art>();
+  searchCriteria: SearchCriteria;
 
   constructor(@Inject(MAT_DIALOG_DATA) private data, filterDialogRef: MatDialogRef<FilterFormComponent>,
     private _formBuilder: FormBuilder, private _artService: ArtService, private _router: Router) {
@@ -36,8 +37,8 @@ export class FilterFormComponent implements OnInit {
     });
 
     this.getCultures();
-    this.getPeriods();
-    this.getMediums()
+    this.getMediums();
+    this.getCenturies();
   }
 
   ngOnInit() {
@@ -59,22 +60,16 @@ export class FilterFormComponent implements OnInit {
 
   getCenturies(){
     this._artService.getCentury().subscribe(res => {
-      
-    })
-  }
-
-  getPeriods() {
-    this._artService.getPeriods(this.periodPageNumber).subscribe(res => {
-      this.periods = res.records.map(period => <Period>{ Name: period.name });
-      this.periods.sort((x, y) => {
-        if(x.Name.toLocaleLowerCase().substring(0,1) > y.Name.toLocaleLowerCase().substring(0,1)){
-          return 1;
+      this.centuries = res.records.map(century => <Century>{ Name: century.name, ObjectCount: century.objectcount});
+      this.centuries.sort((x,y) => {
+        if(x.ObjectCount > y.ObjectCount){
+          return -1;
         }
         else{
-          return -1
+          return 1;
         }
-      });
-    });  
+      })
+    });
   }
 
   getMediums(){
@@ -88,14 +83,15 @@ export class FilterFormComponent implements OnInit {
           return 1;
         }
       });
+      console.log(this.mediums[0].ObjectCount);
     });
   }
 
-  searchArt(culture: string, period: string, classification: string) {
-    let searchCriteria = <SearchCriteria>{
+  searchArt(culture: string, century: string, medium: string) {
+    this.searchCriteria = <SearchCriteria>{
+      Medium: culture,
       Culture: culture,
-      Period: period,
-      Classification: classification
+      Century: century
     };
     // this._artService.SearchCriteria.next(searchCriteria);
     // this._router.navigate()

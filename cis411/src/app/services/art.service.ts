@@ -15,9 +15,9 @@ export class ArtService {
         this._httpClient = httpClient;
     }
 
-    getArtByClassificationCulture(searchCriteria: SearchCriteria, pageNumber: number):Observable<any>{
+    getArtByMediumCenturyCulture(searchCriteria: SearchCriteria, pageNumber: number):Observable<any>{
         return this._httpClient
-        .get<any>(`${environment.baseHarvardApi}object?apikey=${environment.harvardApiKey}&q=culture:${searchCriteria.Culture}&classification=${searchCriteria.Classification}&period=${searchCriteria.Period}&size=20&page=${pageNumber}`);
+        .get<any>(`${environment.baseHarvardApi}object?apikey=${environment.harvardApiKey}&q=culture:${searchCriteria.Culture}&century=${searchCriteria.Century}&medium=${searchCriteria.Medium}&size=20&page=${pageNumber}`);
     }
 
     getCentury(){

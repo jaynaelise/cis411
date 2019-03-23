@@ -25,7 +25,7 @@ export class ArtPageComponent implements OnInit {
 
 
   getArt(){
-    this._artService.getArtByClassificationCulture(this.searchCriteria, this.pageNumber).subscribe(res => {
+    this._artService.getArtByMediumCenturyCulture(this.searchCriteria, this.pageNumber).subscribe(res => {
     });
   }
 }
