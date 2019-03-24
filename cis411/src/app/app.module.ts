@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { OpenSearchComponent } from './opensearch/opensearch.component';
 import { MaterialModule } from './material/material.module';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { ArtService } from './services/art.service';
 import { FilterFormComponent } from './opensearch/filter-form/filter-form.component';
 import { FormsModule, FormBuilder } from '@angular/forms';
@@ -23,7 +22,6 @@ import { HomeComponent } from './home/home.component';
   declarations: [
     AppComponent,
     OpenSearchComponent,
-    NavMenuComponent,
     FilterFormComponent,
     ArtPageComponent,
       ArtDetailComponent,
@@ -45,7 +43,7 @@ import { HomeComponent } from './home/home.component';
     ArtService,
     FormBuilder
   ],
-  bootstrap: [AppComponent, OpenSearchComponent, NavMenuComponent, FilterFormComponent, ArtPageComponent, ArtDetailComponent],
+  bootstrap: [AppComponent, OpenSearchComponent, FilterFormComponent, ArtPageComponent, ArtDetailComponent],
   entryComponents: [FilterFormComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

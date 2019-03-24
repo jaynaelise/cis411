@@ -46,22 +46,23 @@ export class FilterFormComponent implements OnInit {
 
   getCultures() {
     this._artService.getCultures(this.culturePageNumber).subscribe(res => {
-      this.cultures = res.records.map(culture => <Culture>{ Name: culture.name });
-      this.cultures.sort((x, y) => {
-        if(x.Name.toLocaleLowerCase().substring(0,1) > y.Name.toLocaleLowerCase().substring(0,1)){
-          return 1;
+      this.cultures = res.records
+      .map(culture => <Culture>{ Name: culture.name, ObjectCount: culture.objectcount })
+      .sort((x, y) => {
+        if(x.ObjectCount > y.ObjectCount){
+          return -1;
         }
         else{
-          return -1
-        }
-      });
+          return 1;
+        }})
+      .slice(0, 10);
     });
   }
 
   getCenturies(){
     this._artService.getCentury().subscribe(res => {
-      this.centuries = res.records.map(century => <Century>{ Name: century.name, ObjectCount: century.objectcount});
-      this.centuries.sort((x,y) => {
+      this.centuries = res.records.map(century => <Century>{ Name: century.name, ObjectCount: century.objectcount})
+      .sort((x, y) => {
         if(x.ObjectCount > y.ObjectCount){
           return -1;
         }
@@ -69,21 +70,22 @@ export class FilterFormComponent implements OnInit {
           return 1;
         }
       })
+      .slice(0, 10);
     });
   }
 
   getMediums(){
     this._artService.getMediums(this.periodPageNumber).subscribe(res => {
-      this.mediums = res.records.map(medium => <Medium>{ Name: medium.name, ObjectCount: medium.objectcount });
-      this.mediums.sort((x, y) =>{
+      this.mediums = res.records.map(medium => <Medium>{ Name: medium.name, ObjectCount: medium.objectcount })
+      .sort((x, y) => {
         if(x.ObjectCount > y.ObjectCount){
           return -1;
         }
         else{
           return 1;
         }
-      });
-      console.log(this.mediums[0].ObjectCount);
+      })
+      .slice(0, 10);
     });
   }
 

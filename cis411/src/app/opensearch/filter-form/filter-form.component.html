@@ -7,24 +7,35 @@
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <div class="form-controls-container">
-      <mat-form-field>
-        <mat-select placeholder="Select artwork medium" [(value)]="medium">
-          <mat-option *ngFor="let medium of mediums" [value]="medium.Name">{{medium.Name}} - {{medium.ObjectCount}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select placeholder="Select culture" [(value)]="culture">
-          <mat-option *ngFor="let culture of cultures" [value]="culture.Name">{{culture.Name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select placeholder="Select century" [(value)]="century">
-          <mat-option *ngFor="let century of centuries" [value]="century.Name">{{century.Name}} -
-            {{century.ObjectCount}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+    <div class="row">
+      <div class="col-4 choice-title">
+          Medium
+      </div>
+      <div class="col-4 choice-title">
+          Century
+      </div>
+      <div class="col-4 choice-title">
+          Culture
+      </div>
+    </div>
+    <div>
+      <div class="row">
+        <div class="col-4 form-controls-container">
+          <div *ngFor="let medium of mediums">
+            <div class="row filter-item">{{medium.Name}} - {{medium.ObjectCount}}</div>
+          </div>
+        </div>
+        <div class="col-4 form-controls-container">
+          <div *ngFor="let century of centuries">
+            <div class="row filter-item">{{century.Name}} - {{century.ObjectCount}}</div>
+          </div>
+        </div>
+        <div class="col-4 form-controls-container">
+          <div *ngFor="let culture of cultures">
+            <div class="row filter-item">{{culture.Name}} - {{culture.ObjectCount}}</div>
+          </div>
+        </div>
+      </div>
     </div>
     <div>
       <div *ngIf="searchCriteria">
@@ -35,6 +46,6 @@
     </div>
   </mat-card-content>
   <mat-card-footer>
-    <button mat-button (click)="searchArt(culture, century, medium)">Search</button>
+    <button mat-button>Search</button>
   </mat-card-footer>
 </mat-card>

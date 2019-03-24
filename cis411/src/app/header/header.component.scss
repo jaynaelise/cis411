@@ -1,4 +1,11 @@
+@import '../../app-theme.scss';
+
 .header {
+	.nav{
+		color: mat-color($custom-primary) !important;
+	}
+
+
 	.logo {
 		margin-right: 50px;
 	}

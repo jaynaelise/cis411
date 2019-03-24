@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Oswald');
+@import './app-theme.scss';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -11,7 +12,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
   
   *::-webkit-scrollbar-thumb {
-    background-color: red;
-    outline: 1px solid red;
+    background-color: mat-color($custom-primary);
+    outline: 1px solid mat-color($custom-primary);
     border-radius: 10px;
   }
