@@ -25,8 +25,11 @@ export class FilterFormComponent implements OnInit {
   culturePageNumber: number = 1; 
   classificationPageNumber: number = 1;
   periodPageNumber: number = 1;
-  testResults: Array<Art> = new Array<Art>();
   searchCriteria: SearchCriteria;
+  mediumSelection: Array<boolean> = new Array<boolean>();
+  cultureSelection: Array<boolean> = new Array<boolean>();
+  centurySelection: Array<boolean> = new Array<boolean>();
+
 
   constructor(@Inject(MAT_DIALOG_DATA) private data, filterDialogRef: MatDialogRef<FilterFormComponent>,
     private _formBuilder: FormBuilder, private _artService: ArtService, private _router: Router) {
@@ -39,6 +42,7 @@ export class FilterFormComponent implements OnInit {
     this.getCultures();
     this.getMediums();
     this.getCenturies();
+
   }
 
   ngOnInit() {
@@ -56,6 +60,12 @@ export class FilterFormComponent implements OnInit {
           return 1;
         }})
       .slice(0, 10);
+
+      let cultureIndex = 0;
+      this.cultures.forEach(culture => {
+        this.cultureSelection[cultureIndex] = false;
+        cultureIndex++;
+      });
     });
   }
 
@@ -72,6 +82,12 @@ export class FilterFormComponent implements OnInit {
       })
       .slice(0, 10);
     });
+
+    let centuryIndex = 0;
+    this.centuries.forEach(century => {
+      this.centurySelection[centuryIndex] = false;
+      centuryIndex++;
+    })
   }
 
   getMediums(){
@@ -86,7 +102,27 @@ export class FilterFormComponent implements OnInit {
         }
       })
       .slice(0, 10);
+
+      let mediumIndex = 0;
+      this.mediums.forEach(medium => {
+        this.mediumSelection[mediumIndex] = false;
+        mediumIndex++;
+      });
     });
+  }
+
+  toggleMediumSelect(index: number){
+    this.mediumSelection[index] = !this.mediumSelection[index];
+  }
+
+  toggleCultureSelect(index: number){
+    console.log('culture called' + index);
+    this.cultureSelection[index] = !this.cultureSelection[index];
+    console.log(this.cultureSelection[index]);
+  }
+
+  toggleCenturySelect(index: number){
+    this.centurySelection[index] = !this.centurySelection[index];
   }
 
   searchArt(culture: string, century: string, medium: string) {

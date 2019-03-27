@@ -21,27 +21,20 @@
     <div>
       <div class="row">
         <div class="col-4 form-controls-container">
-          <div *ngFor="let medium of mediums">
+          <div *ngFor="let medium of mediums; let i = index" (click)="toggleMediumSelect(i)">
             <div class="row filter-item">{{medium.Name}} - {{medium.ObjectCount}}</div>
           </div>
         </div>
         <div class="col-4 form-controls-container">
-          <div *ngFor="let century of centuries">
+          <div *ngFor="let century of centuries; let i = index" (click)="toggleCenturySelect(i)">
             <div class="row filter-item">{{century.Name}} - {{century.ObjectCount}}</div>
           </div>
         </div>
         <div class="col-4 form-controls-container">
-          <div *ngFor="let culture of cultures">
-            <div class="row filter-item">{{culture.Name}} - {{culture.ObjectCount}}</div>
+          <div *ngFor="let culture of cultures; let i = index" (click)="toggleCultureSelect(i)">
+            <div [ngClass]="(cultureSelection[index]) ? 'selected' : ''" class="row filter-item">{{culture.Name}} - {{culture.ObjectCount}}</div>
           </div>
         </div>
-      </div>
-    </div>
-    <div>
-      <div *ngIf="searchCriteria">
-        <h4>{{searchCriteria.Culture}}</h4>
-        <h4>{{searchCriteria.Medium}}</h4>
-        <h4>{{searchCriteria.Century}}</h4>
       </div>
     </div>
   </mat-card-content>
