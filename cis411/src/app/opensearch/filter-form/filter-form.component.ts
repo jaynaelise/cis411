@@ -25,7 +25,7 @@ export class FilterFormComponent implements OnInit {
   culturePageNumber: number = 1; 
   classificationPageNumber: number = 1;
   periodPageNumber: number = 1;
-  searchCriteria: SearchCriteria;
+  searchCriteria: SearchCriteria = new SearchCriteria();
   mediumSelection: Array<boolean> = new Array<boolean>();
   cultureSelection: Array<boolean> = new Array<boolean>();
   centurySelection: Array<boolean> = new Array<boolean>();
@@ -112,27 +112,32 @@ export class FilterFormComponent implements OnInit {
   }
 
   toggleMediumSelect(index: number){
+    for(let i = 0; i < this.mediumSelection.length; i++){
+      this.mediumSelection[i] = false;
+    }
     this.mediumSelection[index] = !this.mediumSelection[index];
+    this.searchCriteria.Medium = this.mediums[index].Name;
   }
 
   toggleCultureSelect(index: number){
-    console.log('culture called' + index);
+    for(let i = 0; i < this.cultureSelection.length; i++){
+      this.cultureSelection[i] = false;
+    }
     this.cultureSelection[index] = !this.cultureSelection[index];
-    console.log(this.cultureSelection[index]);
+    this.searchCriteria.Culture = this.cultures[index].Name;
   }
 
   toggleCenturySelect(index: number){
+    for(let i = 0; i < this.centurySelection.length; i++){
+      this.centurySelection[i] = false;
+    }
     this.centurySelection[index] = !this.centurySelection[index];
+    this.searchCriteria.Century = this.centuries[index].Name;
   }
 
-  searchArt(culture: string, century: string, medium: string) {
-    this.searchCriteria = <SearchCriteria>{
-      Medium: culture,
-      Culture: culture,
-      Century: century
-    };
-    // this._artService.SearchCriteria.next(searchCriteria);
-    // this._router.navigate()
+  searchArt() {
+    this._artService.searchCriteria.next(this.searchCriteria);
+    this._router.navigateByUrl("/results");
   }
 
 }

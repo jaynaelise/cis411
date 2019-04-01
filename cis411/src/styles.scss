@@ -16,3 +16,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     outline: 1px solid mat-color($custom-primary);
     border-radius: 10px;
   }
+
+  mat-dialog-container{
+    padding: 0 !important;
+}

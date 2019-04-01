@@ -9,36 +9,42 @@
   <mat-card-content>
     <div class="row">
       <div class="col-4 choice-title">
-          Medium
+        Medium
       </div>
       <div class="col-4 choice-title">
-          Century
+        Century
       </div>
       <div class="col-4 choice-title">
-          Culture
+        Culture
       </div>
     </div>
     <div>
       <div class="row">
         <div class="col-4 form-controls-container">
           <div *ngFor="let medium of mediums; let i = index" (click)="toggleMediumSelect(i)">
-            <div class="row filter-item">{{medium.Name}} - {{medium.ObjectCount}}</div>
+            <div [ngClass]="(mediumSelection[i]) ? 'selected' : ''" class="row filter-item">{{medium.Name}} - {{medium.ObjectCount}}</div>
           </div>
         </div>
         <div class="col-4 form-controls-container">
           <div *ngFor="let century of centuries; let i = index" (click)="toggleCenturySelect(i)">
-            <div class="row filter-item">{{century.Name}} - {{century.ObjectCount}}</div>
+            <div [ngClass]="(centurySelection[i]) ? 'selected' : ''" class="row filter-item">{{century.Name}} - {{century.ObjectCount}}</div>
           </div>
         </div>
         <div class="col-4 form-controls-container">
           <div *ngFor="let culture of cultures; let i = index" (click)="toggleCultureSelect(i)">
-            <div [ngClass]="(cultureSelection[index]) ? 'selected' : ''" class="row filter-item">{{culture.Name}} - {{culture.ObjectCount}}</div>
+            <div [ngClass]="(cultureSelection[i]) ? 'selected' : ''" class="row filter-item">{{culture.Name}} -
+              {{culture.ObjectCount}}</div>
           </div>
         </div>
       </div>
     </div>
   </mat-card-content>
   <mat-card-footer>
-    <button mat-button>Search</button>
+    <div class="row">
+      <div class="col-8"></div>
+      <div class="col-2">
+        <button mat-button (click)="searchArt()">Search</button>
+      </div>
+    </div>
   </mat-card-footer>
 </mat-card>

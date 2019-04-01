@@ -1,12 +1,7 @@
 @import '../../../app-theme.scss';
 
-button{
-    color: mat-color($custom-accent) !important;
-}
-
 mat-card{
     max-width: 600px;
-
 }
 
 .form-controls-container{
@@ -22,7 +17,7 @@ mat-slider {
   }
 
 .object-count-wrapper{
-    background-color: rgba(0, 0, 0, 0.486);
+    background-color: rgba(0, 0, 0, 0.164);
     color: whitesmoke;
     border-radius: 25px;
     font-size: 12px;
@@ -34,14 +29,14 @@ mat-slider {
     margin: 5px;
     border-radius: 3px;
     cursor: pointer; 
+}
 
-    .selected{
-        background-color: yellow;
-    }
+.selected{
+    background-color: mat-color($custom-warn);
 }
 
 .filter-item:hover{
-    background-color: #1f1e1f81;
+    background-color: #1f1e1f3b;
     transition: .2s;
 }
 
@@ -53,4 +48,24 @@ mat-slider {
 
 .row{
     margin-bottom: .5rem !important;
+}
+
+.mat-card-content{
+    padding: 25px;
+    padding-top: 0;
+}
+
+mat-card-footer{
+    padding-left: 15px;
+    padding-bottom: 15px;
+    align-content: right;
+    overflow-x: hidden;
+}
+
+button{
+    background-color: mat-color($custom-accent) !important;
+}
+
+mat-header{
+    background-color: mat-color($custom-warn) !important;
 }

@@ -1,9 +1,9 @@
 @import '../../app-theme.scss';
 
 .header {
-	.nav{
-		color: mat-color($custom-primary) !important;
-	}
+	background-color: mat-color($custom-primary) !important;
+	color: whitesmoke;
+	padding-top: 15px;
 
 
 	.logo {

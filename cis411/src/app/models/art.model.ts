@@ -6,5 +6,7 @@ export class Art{
     Culture: string;
     Period: string;
     ImageLink: string;
-    ObjectNumber: string;
+    ObjectUrl: string;
+    Century: string;
+    Medium: string;
 }
