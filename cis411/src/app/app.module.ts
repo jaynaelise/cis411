@@ -14,9 +14,9 @@ import { ArtPageComponent } from './art-page/art-page.component';
 import { ArtDetailComponent } from './art-page/art-detail/art-detail.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { FeaturesComponent } from './features/features.component';
-import { BigfeatureComponent } from './bigfeature/bigfeature.component';
 import { HomeComponent } from './home/home.component';
+import { FeaturesComponent } from './home/features/features.component';
+import { BigfeatureComponent } from './home/bigfeature/bigfeature.component';
 
 @NgModule({
   declarations: [
