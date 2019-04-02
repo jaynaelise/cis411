@@ -18,14 +18,30 @@
 	}
 }
 
-.art-cart {
+.art-card {
 	margin: 50px 0px;
+	border-radius: 0px !important;
 }
 
 .info-box {
 	overflow: scroll;
 	margin: 20px 0px;
 	padding: 10px;
-	height: 300px;
-	border: solid 2px #000;
+	height: auto;
+	border-radius: 10px;
+	background-color: whitesmoke;
+}
+
+.details{
+	margin-top: 50px;
+}
+
+img{
+	height: 600px;
+	width: 500px;
+}
+
+.container{
+	margin-left: 50px !important;
+	margin-right: 50px !important;
 }

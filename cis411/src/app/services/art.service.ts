@@ -25,9 +25,9 @@ export class ArtService {
         .get<any>(`${environment.baseHarvardApi}century?apikey=${environment.harvardApiKey}&size=300`);
     }
 
-    getArtByObjectUrl(objectUrl: string){
+    getArtByObjectId(objectId: string){
          return this._httpClient
-        .get<any>(`${objectUrl}?apikey=${environment.harvardApiKey}`);
+        .get<any>(`${environment.baseHarvardApi}object${objectId}?apikey=${environment.harvardApiKey}`);
     }
 
     getCultures(page: number){

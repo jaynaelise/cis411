@@ -1,21 +1,32 @@
 <div class="container">
-	<mat-icon class="back-icon"><span>arrow_back_ios</span></mat-icon>
-	<mat-divider></mat-divider>
-	<mat-card *ngFor="let art of artPieces" class="art-cart">
-		<div class="row">
-			<div class="image col col-md-6">
-				<img src="art.ImageLink">
-			</div>
-			<div class="details col col-md-6">
-				<h2>{{art.Title}}</h2>
-				<h3>{{art.Medium}} by {{art.ArtistName}}</h3>
-				<h4>Made in {{art.Year}}</h4>
-				<div class="info-box">
-					{{art.Description}}
-				</div>
-			</div>
+	<div class="row">
+		<div class="col-1">
+			<button mat-icon-button>
+				<mat-icon>keyboard_arrow_left</mat-icon>
+			</button>
 		</div>
-	</mat-card>
-	<mat-divider></mat-divider>
-	<mat-icon class="forward-icon"><span>arrow_back_ios</span></mat-icon>
+		<div class="col-10">
+			<mat-divider></mat-divider>
+			<mat-card *ngFor="let art of artPieces" class="art-card">
+				<div class="row">
+					<div class="image col col-md-6">
+						<img src="{{art.ImageLink}}">
+					</div>
+					<div class="details col col-md-6">
+						<h2>{{art.Title}}</h2>
+						<h3>{{art.Medium}}, {{(art.ArtistName) ? art.ArtistName : ''}}, {{art.Year}}</h3>
+						<div *ngIf="art.Description" class="info-box">
+							{{art.Description}}
+						</div>
+					</div>
+				</div>
+			</mat-card>
+			<mat-divider></mat-divider>
+		</div>
+		<div class="col-1">
+			<button mat-icon-button>
+				<mat-icon>keyboard_arrow_right</mat-icon>
+			</button>
+		</div>
+	</div>
 </div>
