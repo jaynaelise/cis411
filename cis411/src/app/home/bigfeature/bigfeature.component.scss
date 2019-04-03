@@ -1,7 +1,9 @@
+@import '../../../app-theme.scss';
+
 .bigfeature {
 	margin-bottom: 100px;
 	height: 500px;
-	background: #cfd8dc;
+	background: mat-color($custom-warn);
 	text-align: center;
 
 	.container {

@@ -1,4 +1,11 @@
+@import '../../app-theme.scss';
+
 .header {
+	background-color: mat-color($custom-primary) !important;
+	color: whitesmoke;
+	padding-top: 15px;
+
+
 	.logo {
 		margin-right: 50px;
 	}

@@ -7,34 +7,44 @@
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <div class="form-controls-container">
-      <mat-form-field>
-        <mat-select placeholder="Select artwork medium" [(value)]="medium">
-          <mat-option *ngFor="let medium of mediums" [value]="medium.Name">{{medium.Name}} - {{medium.ObjectCount}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select placeholder="Select culture" [(value)]="culture">
-          <mat-option *ngFor="let culture of cultures" [value]="culture.Name">{{culture.Name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-select placeholder="Select century" [(value)]="century">
-          <mat-option *ngFor="let century of centuries" [value]="century.Name">{{century.Name}} -
-            {{century.ObjectCount}}</mat-option>
-        </mat-select>
-      </mat-form-field>
+    <div class="row">
+      <div class="col-4 choice-title">
+        Medium
+      </div>
+      <div class="col-4 choice-title">
+        Century
+      </div>
+      <div class="col-4 choice-title">
+        Culture
+      </div>
     </div>
     <div>
-      <div *ngIf="searchCriteria">
-        <h4>{{searchCriteria.Culture}}</h4>
-        <h4>{{searchCriteria.Medium}}</h4>
-        <h4>{{searchCriteria.Century}}</h4>
+      <div class="row">
+        <div class="col-4 form-controls-container">
+          <div *ngFor="let medium of mediums; let i = index" (click)="toggleMediumSelect(i)">
+            <div [ngClass]="(mediumSelection[i]) ? 'selected' : ''" class="row filter-item">{{medium.Name}} - {{medium.ObjectCount}}</div>
+          </div>
+        </div>
+        <div class="col-4 form-controls-container">
+          <div *ngFor="let century of centuries; let i = index" (click)="toggleCenturySelect(i)">
+            <div [ngClass]="(centurySelection[i]) ? 'selected' : ''" class="row filter-item">{{century.Name}} - {{century.ObjectCount}}</div>
+          </div>
+        </div>
+        <div class="col-4 form-controls-container">
+          <div *ngFor="let culture of cultures; let i = index" (click)="toggleCultureSelect(i)">
+            <div [ngClass]="(cultureSelection[i]) ? 'selected' : ''" class="row filter-item">{{culture.Name}} -
+              {{culture.ObjectCount}}</div>
+          </div>
+        </div>
       </div>
     </div>
   </mat-card-content>
   <mat-card-footer>
-    <button mat-button (click)="searchArt(culture, century, medium)">Search</button>
+    <div class="row">
+      <div class="col-8"></div>
+      <div class="col-2">
+        <button mat-button (click)="searchArt()">Search</button>
+      </div>
+    </div>
   </mat-card-footer>
 </mat-card>

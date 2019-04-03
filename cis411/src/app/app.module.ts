@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { OpenSearchComponent } from './opensearch/opensearch.component';
 import { MaterialModule } from './material/material.module';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { ArtService } from './services/art.service';
 import { FilterFormComponent } from './opensearch/filter-form/filter-form.component';
 import { FormsModule, FormBuilder } from '@angular/forms';
@@ -15,15 +14,14 @@ import { ArtPageComponent } from './art-page/art-page.component';
 import { ArtDetailComponent } from './art-page/art-detail/art-detail.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { FeaturesComponent } from './features/features.component';
-import { BigfeatureComponent } from './bigfeature/bigfeature.component';
 import { HomeComponent } from './home/home.component';
+import { FeaturesComponent } from './home/features/features.component';
+import { BigfeatureComponent } from './home/bigfeature/bigfeature.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OpenSearchComponent,
-    NavMenuComponent,
     FilterFormComponent,
     ArtPageComponent,
       ArtDetailComponent,
@@ -45,7 +43,7 @@ import { HomeComponent } from './home/home.component';
     ArtService,
     FormBuilder
   ],
-  bootstrap: [AppComponent, OpenSearchComponent, NavMenuComponent, FilterFormComponent, ArtPageComponent, ArtDetailComponent],
+  bootstrap: [AppComponent, OpenSearchComponent, FilterFormComponent, ArtPageComponent, ArtDetailComponent],
   entryComponents: [FilterFormComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

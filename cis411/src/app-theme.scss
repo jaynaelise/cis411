@@ -1,0 +1,71 @@
+@import '~@angular/material/theming';
+
+$custom-typography: mat-typography-config($font-family: '"Roboto", sans-serif;');
+@include mat-core($custom-typography);
+
+// #FBE8A6
+// #F4976C
+// #303C6C
+// #B4DFE5
+// #D2FDFF
+
+$mat-customwaystar: (
+  50: #FBE8A6,
+  100: #F4976C,
+  200: #303C6C,
+  300: #B4DFE5,
+  400: #D2FDFF,
+  500: #002c41,
+  600: #00273b,
+  700: #002132,
+  800: #001b2a,
+  900: #00101c,
+  A100: #f7a68f,
+  A200: #f38262,
+  A400: #f16741,
+  A700: #ee4c1f,
+  contrast: (
+    50: #fdeae4,
+    100: #fac9bc,
+    200: #f7a68f,
+    300: #f38262,
+    400: #f16741,
+    500: #ee4c1f,
+    600: #ec451b,
+    700: #e93c17,
+    800: #e73312,
+    900: #e2240a,
+    A100: #ffffff,
+    A200: #ffdcd9,
+    A400: #ffada6,
+    A700: #ff968c,
+)
+);
+
+ $custom-primary: mat-palette($mat-customwaystar, 200);
+ $custom-accent:  mat-palette($mat-customwaystar, 100);
+ $custom-warn:    mat-palette($mat-customwaystar, 50);
+
+//$custom-theme: mat-dark-theme($custom-primary, $custom-accent, $custom-warn);
+$custom-theme: mat-light-theme($custom-primary, $custom-accent, $custom-warn);
+@include angular-material-theme($custom-theme);
+
+
+@mixin mix-app-theme($custom-theme) {
+    $primary: map-get($custom-theme, primary);
+    $accent: map-get($custom-theme, accent);
+    $warn: map-get($custom-theme, warn);
+    
+    .mat-button-toggle {
+      background-color: mat-color($primary) !important;
+      color: mat-color($primary, default-contrast) !important;
+    }
+  
+    .mat-button-toggle-checked {
+      background-color:  mat-color($warn)!important;
+      color: mat-color($primary, default-contrast) !important;
+    }
+  }
+  // Include the mixin
+@include mix-app-theme($custom-theme);
+button:focus {outline:0;}

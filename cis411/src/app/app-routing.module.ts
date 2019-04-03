@@ -5,6 +5,8 @@ import { ArtPageComponent } from './art-page/art-page.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full'},
+  { path: 'home', component: HomeComponent, pathMatch: 'full' },
+  { path: 'about', component: HomeComponent, pathMatch: 'full' },
   { path: 'results', component: ArtPageComponent, pathMatch: 'full'}
 ];
 

@@ -25,8 +25,11 @@ export class FilterFormComponent implements OnInit {
   culturePageNumber: number = 1; 
   classificationPageNumber: number = 1;
   periodPageNumber: number = 1;
-  testResults: Array<Art> = new Array<Art>();
-  searchCriteria: SearchCriteria;
+  searchCriteria: SearchCriteria = new SearchCriteria();
+  mediumSelection: Array<boolean> = new Array<boolean>();
+  cultureSelection: Array<boolean> = new Array<boolean>();
+  centurySelection: Array<boolean> = new Array<boolean>();
+
 
   constructor(@Inject(MAT_DIALOG_DATA) private data, filterDialogRef: MatDialogRef<FilterFormComponent>,
     private _formBuilder: FormBuilder, private _artService: ArtService, private _router: Router) {
@@ -39,6 +42,7 @@ export class FilterFormComponent implements OnInit {
     this.getCultures();
     this.getMediums();
     this.getCenturies();
+
   }
 
   ngOnInit() {
@@ -46,22 +50,29 @@ export class FilterFormComponent implements OnInit {
 
   getCultures() {
     this._artService.getCultures(this.culturePageNumber).subscribe(res => {
-      this.cultures = res.records.map(culture => <Culture>{ Name: culture.name });
-      this.cultures.sort((x, y) => {
-        if(x.Name.toLocaleLowerCase().substring(0,1) > y.Name.toLocaleLowerCase().substring(0,1)){
-          return 1;
+      this.cultures = res.records
+      .map(culture => <Culture>{ Name: culture.name, ObjectCount: culture.objectcount })
+      .sort((x, y) => {
+        if(x.ObjectCount > y.ObjectCount){
+          return -1;
         }
         else{
-          return -1
-        }
+          return 1;
+        }})
+      .slice(0, 10);
+
+      let cultureIndex = 0;
+      this.cultures.forEach(culture => {
+        this.cultureSelection[cultureIndex] = false;
+        cultureIndex++;
       });
     });
   }
 
   getCenturies(){
     this._artService.getCentury().subscribe(res => {
-      this.centuries = res.records.map(century => <Century>{ Name: century.name, ObjectCount: century.objectcount});
-      this.centuries.sort((x,y) => {
+      this.centuries = res.records.map(century => <Century>{ Name: century.name, ObjectCount: century.objectcount})
+      .sort((x, y) => {
         if(x.ObjectCount > y.ObjectCount){
           return -1;
         }
@@ -69,32 +80,64 @@ export class FilterFormComponent implements OnInit {
           return 1;
         }
       })
+      .slice(0, 10);
     });
+
+    let centuryIndex = 0;
+    this.centuries.forEach(century => {
+      this.centurySelection[centuryIndex] = false;
+      centuryIndex++;
+    })
   }
 
   getMediums(){
     this._artService.getMediums(this.periodPageNumber).subscribe(res => {
-      this.mediums = res.records.map(medium => <Medium>{ Name: medium.name, ObjectCount: medium.objectcount });
-      this.mediums.sort((x, y) =>{
+      this.mediums = res.records.map(medium => <Medium>{ Name: medium.name, ObjectCount: medium.objectcount })
+      .sort((x, y) => {
         if(x.ObjectCount > y.ObjectCount){
           return -1;
         }
         else{
           return 1;
         }
+      })
+      .slice(0, 10);
+
+      let mediumIndex = 0;
+      this.mediums.forEach(medium => {
+        this.mediumSelection[mediumIndex] = false;
+        mediumIndex++;
       });
-      console.log(this.mediums[0].ObjectCount);
     });
   }
 
-  searchArt(culture: string, century: string, medium: string) {
-    this.searchCriteria = <SearchCriteria>{
-      Medium: culture,
-      Culture: culture,
-      Century: century
-    };
-    // this._artService.SearchCriteria.next(searchCriteria);
-    // this._router.navigate()
+  toggleMediumSelect(index: number){
+    for(let i = 0; i < this.mediumSelection.length; i++){
+      this.mediumSelection[i] = false;
+    }
+    this.mediumSelection[index] = !this.mediumSelection[index];
+    this.searchCriteria.Medium = this.mediums[index].Name;
+  }
+
+  toggleCultureSelect(index: number){
+    for(let i = 0; i < this.cultureSelection.length; i++){
+      this.cultureSelection[i] = false;
+    }
+    this.cultureSelection[index] = !this.cultureSelection[index];
+    this.searchCriteria.Culture = this.cultures[index].Name;
+  }
+
+  toggleCenturySelect(index: number){
+    for(let i = 0; i < this.centurySelection.length; i++){
+      this.centurySelection[i] = false;
+    }
+    this.centurySelection[index] = !this.centurySelection[index];
+    this.searchCriteria.Century = this.centuries[index].Name;
+  }
+
+  searchArt() {
+    this._artService.searchCriteria.next(this.searchCriteria);
+    this._router.navigateByUrl("/results");
   }
 
 }
