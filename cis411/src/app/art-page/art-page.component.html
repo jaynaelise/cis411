@@ -1,4 +1,12 @@
-<div class="container">
+<div *ngIf="artPieces.length === 0">
+	<mat-card>
+		<mat-card-content>
+			<div class="mat-card-title">Hmmm we couldn't find anything, but
+				your quest does not end here. Go and search again!</div>
+		</mat-card-content>
+	</mat-card>
+</div>
+<div *ngIf="artPieces.length > 0" class="container">
 	<div class="row">
 		<div class="col-1">
 			<button mat-icon-button>
@@ -9,18 +17,16 @@
 			<mat-divider></mat-divider>
 			<div *ngFor="let art of artPieces">
 				<mat-card *ngIf="art.ImageLink" class="art-card">
-					<div class="row">
-						<div class="image col col-md-6">
-							<img src="{{art.ImageLink}}">
-						</div>
-						<div class="details col col-md-6">
-							<h2>{{art.Title}}</h2>
-							<h3>{{art.Medium}}, {{(art.ArtistName) ? art.ArtistName : ''}}, {{art.Year}}</h3>
+					<img mat-card-image src="{{art.ImageLink}}">
+					<mat-card-content>
+						<div class="details">
+							<h2 class="mat-card-title">{{art.Title}}</h2>
+							<h4 class="mat-card-subtitle">{{art.Medium + ','}} {{(art.ArtistName) ? art.ArtistName + ',' : ''}} {{art.Year}}</h4>
 							<div *ngIf="art.Description" class="info-box">
 								{{art.Description}}
 							</div>
 						</div>
-					</div>
+					</mat-card-content>
 				</mat-card>
 			</div>
 			<mat-divider></mat-divider>
