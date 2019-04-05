@@ -31,7 +31,7 @@ export class FilterFormComponent implements OnInit {
   centurySelection: Array<boolean> = new Array<boolean>();
 
 
-  constructor(@Inject(MAT_DIALOG_DATA) private data, filterDialogRef: MatDialogRef<FilterFormComponent>,
+  constructor(@Inject(MAT_DIALOG_DATA) private data, private _filterDialogRef: MatDialogRef<FilterFormComponent>,
     private _formBuilder: FormBuilder, private _artService: ArtService, private _router: Router) {
 
     this.searchForm = this._formBuilder.group({
@@ -50,8 +50,7 @@ export class FilterFormComponent implements OnInit {
 
   getCultures() {
     this._artService.getCultures(this.culturePageNumber).subscribe(res => {
-      this.cultures = res.records
-      .map(culture => <Culture>{ Name: culture.name, ObjectCount: culture.objectcount })
+      this.cultures = res.records.map(culture => <Culture>{ Name: culture.name, ObjectCount: culture.objectcount })
       .sort((x, y) => {
         if(x.ObjectCount > y.ObjectCount){
           return -1;
@@ -138,6 +137,7 @@ export class FilterFormComponent implements OnInit {
   searchArt() {
     this._artService.searchCriteria.next(this.searchCriteria);
     this._router.navigateByUrl("/results");
+    this._filterDialogRef.close();
   }
 
 }
