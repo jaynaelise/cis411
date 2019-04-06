@@ -22,18 +22,18 @@
       <div class="row">
         <div class="col-4 form-controls-container">
           <div *ngFor="let medium of mediums; let i = index" (click)="toggleMediumSelect(i)">
-            <div [ngClass]="(mediumSelection[i]) ? 'selected' : ''" class="row filter-item">{{medium.Name}} - {{medium.ObjectCount}}</div>
+            <div [ngClass]="(mediumSelection[i]) ? 'selected' : ''" class="row filter-item">{{medium.Name}} - {{medium.ObjectCount | number}}</div>
           </div>
         </div>
         <div class="col-4 form-controls-container">
           <div *ngFor="let century of centuries; let i = index" (click)="toggleCenturySelect(i)">
-            <div [ngClass]="(centurySelection[i]) ? 'selected' : ''" class="row filter-item">{{century.Name}} - {{century.ObjectCount}}</div>
+            <div [ngClass]="(centurySelection[i]) ? 'selected' : ''" class="row filter-item">{{century.Name}} - {{century.ObjectCount | number}}</div>
           </div>
         </div>
         <div class="col-4 form-controls-container">
           <div *ngFor="let culture of cultures; let i = index" (click)="toggleCultureSelect(i)">
             <div [ngClass]="(cultureSelection[i]) ? 'selected' : ''" class="row filter-item">{{culture.Name}} -
-              {{culture.ObjectCount}}</div>
+              {{culture.ObjectCount | number}}</div>
           </div>
         </div>
       </div>
