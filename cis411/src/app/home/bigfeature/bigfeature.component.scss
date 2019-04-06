@@ -3,11 +3,14 @@
 .bigfeature {
 	margin-bottom: 100px;
 	height: 500px;
-	background: mat-color($custom-warn);
+	//background: mat-color($custom-warn);
+	background-image:  url("../../../assets/WanderAboveSeaFog.png");
 	text-align: center;
-
+	color: white;
+	
 	.container {
 		position: relative;
+		font-family: 'Oswald', sans-serif;
 	}
 	.wrapper {
 		display: flex;
