@@ -13,6 +13,8 @@ export class ArtPageComponent implements OnInit {
   artPieces: Array<Art> = new Array<Art>();
   searchCriteria: SearchCriteria;
   pageNumber: number = 1;
+  totalNumber = 0;
+  currentNumber = 1;
 
   constructor(private _artService: ArtService) {
     this._artService.searchCriteria.subscribe(res => {
@@ -24,6 +26,18 @@ export class ArtPageComponent implements OnInit {
   ngOnInit() {
   }
 
+  moveTo(direction) {
+    if (direction == 'back') {
+      if (this.currentNumber - 1 != 0) {
+        this.currentNumber = this.currentNumber - 1;
+      }
+    }
+    if (direction == 'forward') {
+      if (this.currentNumber + 1 != 21 && this.currentNumber + 1 != this.totalNumber) {
+        this.currentNumber = this.currentNumber + 1;
+      }
+    }
+  }
 
   getArt() {
     this.artPieces[0]
@@ -42,6 +56,7 @@ export class ArtPageComponent implements OnInit {
               this.artPieces[i].ImageLink = result.primaryimageurl;
               this.artPieces[i].Century = this.searchCriteria.Century;
               this.artPieces[i].Medium = this.searchCriteria.Medium;
+              this.totalNumber = this.totalNumber + 1;
             }
           });
         }
