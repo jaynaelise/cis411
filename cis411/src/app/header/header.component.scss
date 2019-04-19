@@ -5,8 +5,18 @@
 	color: whitesmoke;
 	padding-top: 15px;
 
+	.tag {
+		height: 100px;
+		width: 100px;
+		position: relative;
+		top: 15px;
+	}
 
 	.logo {
-		margin-right: 50px;
+		margin-right: 10px;
+		height: 100px; 
+		width: 100px;
+		position: relative;
+		top: 15px;
 	}
 }
